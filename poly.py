@@ -264,23 +264,14 @@ def read_polynomial():
     return poly
 def main():
     """
-    Main function to interact with the user and perform polynomial operations.
-    This function prompts the user to input two 
-    polynomials as a series of coefficient-exponent pairs.
+    Main function to handle reading inputs.
     It then creates LinkedList objects for each polynomial and performs the following operations:
     - Adding the two polynomials together.
     - Multiplying the two polynomials together.
     The results of both operations are displayed as string 
     representations of the resulting polynomials.
     The user is prompted to input the coefficient-exponent pairs of 
-    each polynomial in the following format:
-    - Coefficient Exponent Coefficient Exponent ...
-    Example:
-    Enter the first polynomial (coeff exp pairs):
-    3 2 4 1 5 0
-    Enter the second polynomial (coeff exp pairs):
-    2 2 1 1 6 0
-    This will add the two polynomials and multiply them, printing the resulting sum and product.
+    Each polynomial in the following format:
     """
     p = read_polynomial()
     input()
