@@ -256,22 +256,31 @@ def read_polynomial():
     Returns:
         poly: LinkedList
     """
-    n = int(input().strip())
+    n = input().strip()
     poly = LinkedList()
     for _ in range(n):
-        coeff, exp = map(int, input().strip().split())
+        coeff, exp = (int(x) for x in input().strip().split())
         poly.insert_term(coeff, exp)
     return poly
 def main():
     """
-    Main function to handle reading inputs.
+    Main function to interact with the user and perform polynomial operations.
+    This function prompts the user to input two 
+    polynomials as a series of coefficient-exponent pairs.
     It then creates LinkedList objects for each polynomial and performs the following operations:
     - Adding the two polynomials together.
     - Multiplying the two polynomials together.
     The results of both operations are displayed as string 
     representations of the resulting polynomials.
     The user is prompted to input the coefficient-exponent pairs of 
-    Each polynomial in the following format:
+    each polynomial in the following format:
+    - Coefficient Exponent Coefficient Exponent ...
+    Example:
+    Enter the first polynomial (coeff exp pairs):
+    3 2 4 1 5 0
+    Enter the second polynomial (coeff exp pairs):
+    2 2 1 1 6 0
+    This will add the two polynomials and multiply them, printing the resulting sum and product.
     """
     p = read_polynomial()
     input()
