@@ -256,7 +256,7 @@ def read_polynomial():
     Returns:
         poly: LinkedList
     """
-    n = input().strip()
+    n = int(input().strip())
     poly = LinkedList()
     for _ in range(n):
         coeff, exp = (int(x) for x in input().strip().split())
