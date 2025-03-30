@@ -243,38 +243,25 @@ class LinkedList:
         return result
 
     def __str__(self):
-        if not self.head:
-            return ''
         terms = []
-        current = self.head
-        while current:
-            coeff = current.coeff
-            exp =  current.exp
-            if coeff == 0:
-                current = current.next
-                continue
-            if exp == 0:
-                term = f'{coeff}'
-            elif exp == 1:
-                if coeff == 1:
-                    term = "x"
-                elif coeff == -1:
-                    term = "-x"
-                else:
-                    term = f"{coeff}x"
-            else:
-                if coeff == 1:
-                    term = f"x^{exp}"
-                elif coeff == -1:
-                    term = f"-x^{exp}"
-                else:
-                    term = f"{coeff}x^{exp}"
-
-            terms.append(term)
-            current = current.next
-
-        return " + ".join(terms).replace("+ -", "- ")
-
+        curr = self.head
+        while curr:
+            terms.append(f"({curr.coeff}, {curr.exp})")
+            curr = curr.next
+        return " + ".join(terms)
+def read_polynomial():
+    """Reads polynomials for processing and adding
+    Args:
+        None
+    Returns:
+        poly: LinkedList
+    """
+    n = int(input().strip())
+    poly = LinkedList()
+    for _ in range(n):
+        coeff, exp = map(int, input().strip().split())
+        poly.insert_term(coeff, exp)
+    return poly
 def main():
     """
     Main function to interact with the user and perform polynomial operations.
@@ -295,34 +282,13 @@ def main():
     2 2 1 1 6 0
     This will add the two polynomials and multiply them, printing the resulting sum and product.
     """
-    def read_p():
-        poly = LinkedList()
-        try:
-            user_input = input().strip().split()
-            if len(user_input) % 2 != 0:
-                raise ValueError("Invalid input: Must provide coefficient-exponent pairs.")
-            for i in range(0, len(user_input), 2):
-                coeff = int(user_input[i])
-                exp = int(user_input[i + 1])
-                poly.insert_term(coeff, exp)
-        except ValueError as e:
-            print("Error reading polynomial:", e)
-            return None
-        return poly
-
-    print("Enter the first polynomial (coeff exp pairs):")
-    p = read_p()
-    if p is None:
-        return
-    print("Enter the second polynomial (coeff exp pairs):")
-    q = read_p()
-    if q is None:
-        return
+    p = read_polynomial()
+    input()
+    q = read_polynomial()
     sum_poly = p.add(q)
     product_poly = p.mult(q)
-    print("Sum:", sum_poly)
-    print("Product:", product_poly)
-
+    print(sum_poly)
+    print(product_poly)
 
 if __name__ == "__main__":
     main()
